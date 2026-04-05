@@ -31,7 +31,10 @@ A modern, responsive, and dynamic web application built with React to help drops
 
 ![cannot loading!](screenshot.png)
 
-🚀 Demo You can try this **Profit-Calculator** live here: [![Deploy with Vercel](https://vercel.com/button)](https://dropshipping-profit-calculator.vercel.app/)
+## 🚀 Demo 
+You can try this **Profit-Calculator** live here: [![Deploy with Vercel](https://vercel.com/button)](https://dropshipping-profit-calculator.vercel.app/)
+
+---
 
 If you wish to run the Dropshipping Profit Calculator on your local environment, follow these steps:
 
