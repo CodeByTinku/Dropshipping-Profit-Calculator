@@ -27,6 +27,10 @@ A modern, responsive, and dynamic web application built with React to help drops
 - **Icons**: [Heroicons](https://heroicons.com/)
 
 ---
+## Screenshot
+
+![cannot loading!](screenshot.png)
+
 
 ## 🚀 How to Run Locally
 
