@@ -25,7 +25,7 @@ const ResultCard = ({ title, value, type = 'default' }) => {
           transition={{ duration: 0.2 }}
           className="text-2xl font-bold tracking-tight inline-block"
         >
-          {String(value).includes('$') || String(value).includes('%') || String(value).includes('Qty') ? value : `$${Number(value).toLocaleString()}`}
+          {String(value).includes('$') || String(value).includes('%') || String(value).includes('Qty') ? value : `₹${Number(value).toLocaleString()}`}
         </motion.span>
       </AnimatePresence>
     </div>

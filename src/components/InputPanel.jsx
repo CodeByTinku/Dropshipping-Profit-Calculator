@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { CalculatorContext } from '../context/CalculatorContext';
 import { 
-  CurrencyDollarIcon, 
+  CurrencyRupeeIcon, 
   TagIcon, 
   ShoppingCartIcon, 
   CheckCircleIcon, 
@@ -62,7 +62,7 @@ const InputPanel = () => {
           id="productCost"
           value={state.productCost}
           onChange={(val) => updateField('productCost', val)}
-          icon={CurrencyDollarIcon}
+          icon={CurrencyRupeeIcon}
           unit="$"
         />
         <InputField

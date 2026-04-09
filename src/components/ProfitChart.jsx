@@ -27,7 +27,7 @@ const ProfitChart = () => {
     labels: ['Revenue', 'Spends', 'Net Profit'],
     datasets: [
       {
-        label: 'Amount ($)',
+        label: 'Amount (₹)',
         data: [revenue, totalSpends, netProfit],
         backgroundColor: [
           'rgba(6, 182, 212, 0.8)', // Cyan 500
@@ -72,7 +72,7 @@ const ProfitChart = () => {
         ticks: {
           color: '#64748b', // slate-500
           callback: function(value) {
-            return '$' + value;
+            return '₹' + value;
           }
         }
       },
