@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { CalculatorContext } from '../context/CalculatorContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProfitChart from './ProfitChart';
+import html2canvas from 'html2canvas';
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 
 const ResultCard = ({ title, value, type = 'default' }) => {
   const getColors = () => {
@@ -39,15 +41,60 @@ const ResultsPanel = () => {
     netProfit, 
     netProfitPerOrder,
     calcConfirmedOrders,
-    calcDeliveredOrders 
+    calcDeliveredOrders,
+    rtoOrders,
+    roas
   } = useContext(CalculatorContext);
 
+  const [isExporting, setIsExporting] = useState(false);
+  const reportRef = useRef(null);
+
+  const exportToPDF = async () => {
+    if (!reportRef.current) return;
+    setIsExporting(true);
+    
+    try {
+      const canvas = await html2canvas(reportRef.current, {
+        scale: 2, // High resolution
+        backgroundColor: '#ffffff',
+        useCORS: true,
+        allowTaint: true
+      });
+      
+      const imgData = canvas.toDataURL('image/png');
+      
+      // Download as PNG Image
+      const link = document.createElement('a');
+      link.download = 'dropshipping-profit-report.png';
+      link.href = imgData;
+      link.click();
+
+    } catch (error) {
+      console.error("Failed to export Image", error);
+      alert("Failed to export report. " + (error.message || "Please try again."));
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl shadow-slate-200/50 flex flex-col h-full">
-      <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800">
-        <span className="w-2 h-6 bg-cyan-500 rounded-full"></span>
-        Performance Overview
-      </h2>
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl shadow-slate-200/50 flex flex-col h-full relative">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl font-semibold flex items-center gap-2 text-slate-800">
+          <span className="w-2 h-6 bg-cyan-500 rounded-full"></span>
+          Performance Overview
+        </h2>
+        <button 
+          onClick={exportToPDF}
+          disabled={isExporting}
+          className="flex items-center gap-2 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-lg transition-colors disabled:opacity-50"
+        >
+          <ArrowDownTrayIcon className="w-4 h-4" />
+          {isExporting ? 'Exporting...' : 'Export Image'}
+        </button>
+      </div>
+
+      <div ref={reportRef} className="flex-1 flex flex-col bg-white p-2">
       
       <div className="grid grid-cols-2 gap-4 flex-1">
         <ResultCard 
@@ -85,6 +132,7 @@ const ResultsPanel = () => {
       <div className="mt-8 border-t border-slate-200 pt-6">
         <h3 className="text-sm font-medium text-slate-500 mb-2">Metrics Chart</h3>
         <ProfitChart />
+      </div>
       </div>
     </div>
   );
