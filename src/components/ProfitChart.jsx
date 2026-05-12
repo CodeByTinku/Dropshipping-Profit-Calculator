@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const ProfitChart = () => {
+const ProfitChart = ({ darkMode }) => {
   const { revenue, totalSpends, netProfit } = useContext(CalculatorContext);
 
   const data = {
@@ -30,9 +30,9 @@ const ProfitChart = () => {
         label: 'Amount (₹)',
         data: [revenue, totalSpends, netProfit],
         backgroundColor: [
-          'rgba(6, 182, 212, 0.8)', // Cyan 500
-          'rgba(239, 68, 68, 0.8)',  // Red 500
-          'rgba(34, 197, 94, 0.8)',  // Green 500
+          darkMode ? 'rgba(6, 182, 212, 0.6)' : 'rgba(6, 182, 212, 0.8)', // Cyan
+          darkMode ? 'rgba(239, 68, 68, 0.6)' : 'rgba(239, 68, 68, 0.8)',  // Red
+          darkMode ? 'rgba(34, 197, 94, 0.6)' : 'rgba(34, 197, 94, 0.8)',  // Green
         ],
         borderColor: [
           'rgba(8, 145, 178, 1)', // Cyan 600
@@ -53,10 +53,10 @@ const ProfitChart = () => {
         display: false,
       },
       tooltip: {
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        titleColor: '#0f172a',    // slate-900
-        bodyColor: '#334155',     // slate-700
-        borderColor: '#e2e8f0',   // slate-200
+        backgroundColor: darkMode ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+        titleColor: darkMode ? '#f8fafc' : '#0f172a',
+        bodyColor: darkMode ? '#cbd5e1' : '#334155',
+        borderColor: darkMode ? '#475569' : '#e2e8f0',
         borderWidth: 1,
         padding: 12,
         cornerRadius: 8,
@@ -67,10 +67,10 @@ const ProfitChart = () => {
       y: {
         beginAtZero: true,
         grid: {
-          color: 'rgba(226, 232, 240, 0.8)', // slate-200
+          color: darkMode ? 'rgba(51, 65, 85, 0.8)' : 'rgba(226, 232, 240, 0.8)',
         },
         ticks: {
-          color: '#64748b', // slate-500
+          color: darkMode ? '#94a3b8' : '#64748b',
           callback: function(value) {
             return '₹' + value;
           }
@@ -81,15 +81,16 @@ const ProfitChart = () => {
           display: false,
         },
         ticks: {
-          color: '#64748b', // slate-500
+          color: darkMode ? '#94a3b8' : '#64748b',
         }
       }
     }
   };
 
+  // We add a key using darkMode to force re-render of canvas on theme toggle
   return (
     <div className="h-64 mt-6">
-      <Bar data={data} options={options} />
+      <Bar key={darkMode ? 'dark' : 'light'} data={data} options={options} />
     </div>
   );
 };

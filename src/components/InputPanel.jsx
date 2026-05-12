@@ -11,11 +11,11 @@ import {
 
 const InputField = ({ label, id, value, onChange, icon: Icon, unit, isPercentage = false }) => (
   <div className="flex flex-col gap-2">
-    <label htmlFor={id} className="text-sm font-medium text-slate-700">
+    <label htmlFor={id} className="text-sm font-medium text-slate-700 dark:text-slate-300">
       {label}
     </label>
     <div className="relative group">
-      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-600 transition-colors">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-600 dark:group-focus-within:text-indigo-400 transition-colors">
         <Icon className="h-5 w-5" />
       </div>
       <input
@@ -38,10 +38,10 @@ const InputField = ({ label, id, value, onChange, icon: Icon, unit, isPercentage
           }
           onChange(strVal);
         }}
-        className="block w-full pl-10 pr-12 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all shadow-sm outline-none"
+        className="block w-full pl-10 pr-12 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 transition-all shadow-sm outline-none"
       />
       <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-        <span className="text-slate-500 sm:text-sm">{unit}</span>
+        <span className="text-slate-500 dark:text-slate-400 sm:text-sm">{unit}</span>
       </div>
     </div>
   </div>
@@ -51,9 +51,9 @@ const InputPanel = () => {
   const { state, updateField } = useContext(CalculatorContext);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl shadow-slate-200/50">
-      <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800">
-        <span className="w-2 h-6 bg-indigo-500 rounded-full"></span>
+    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-none">
+      <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <span className="w-2 h-6 bg-indigo-500 dark:bg-indigo-400 rounded-full"></span>
         Input Parameters
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
