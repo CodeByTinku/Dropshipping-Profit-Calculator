@@ -13,7 +13,8 @@ A modern, responsive, and dynamic web application built with React to help drops
 - **Dynamic Data Context:** Built seamlessly with React Context API. All calculations auto-update instantly without lag.
 - **Visual Analytics:** Fully integrated **Chart.js** bar-graph visualizing Gross Revenue vs. Total Spends vs. Net Profit.
 - **Accurate Logistics Calculations:** Factors in Expected Delivery % and Confirmed Order %—because the true dropshipping profit lies in successful *deliveries*, not just click-throughs!
-- **Smooth Aesthetics:** Implemented using **Tailwind CSS v4** featuring a vibrant and clean 'Light Theme' alongside fluid **Framer Motion** numbers animations.
+- **Smooth Aesthetics:** Implemented using **Tailwind CSS v4** alongside fluid **Framer Motion** numbers animations for a premium feel.
+- **Dark Mode Support:** Includes a seamless dark mode toggle that automatically adjusts the UI, custom scrollbars, and Chart.js graphics for a comfortable, eye-friendly experience.
 - **Easy Form Handling:** Integrated with `@heroicons/react` for intuitive iconography inside input bars.
 
 ---
